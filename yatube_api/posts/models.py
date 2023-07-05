@@ -26,7 +26,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='posts/',
         null=True, blank=True
-    )  # поле для картинки
+    )
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
@@ -59,3 +59,6 @@ class Comment(models.Model):
 
     class Meta:
         default_related_name = 'comments'
+
+    def __str__(self):
+        return self.text[:20]
